@@ -38,19 +38,22 @@ export class UserLoginFormComponent implements OnInit {
   }
 
   userLogin(): void {
-    this.fetchApiData.userLogin(this.userData).subscribe((result) => {
-      localStorage.setItem("user", JSON.stringify(result.user));
-      localStorage.setItem("token", result.token);
-      this.dialogRef.close(); 
-      this.router.navigate(['movies']);
-      this.snackBar.open('Login successful', 'OK', {
-        duration: 2000
-      });
-    }, (result) => {
-      this.snackBar.open('Login failed - ' + result, 'OK', {
-        duration: 2000
-      });
-    });
+    this.fetchApiData.userLogin(this.userData).subscribe(
+      (result) => {
+        localStorage.setItem("user", JSON.stringify(result.user));
+        localStorage.setItem("token", result.token);
+        localStorage.setItem("username", result.user.Username)
+        
+        this.snackBar.open('Login successful', 'OK', { duration: 2000 });
+        this.dialogRef.close();
+        setTimeout(() => {
+          this.router.navigate(['/movies']);
+        }, 200);
+    },
+    (error) => {
+      this.snackBar.open('Login failed - ' + error.error, 'OK', { duration: 2000 });
+      }
+    );
   }
 
 }

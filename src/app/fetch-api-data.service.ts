@@ -74,9 +74,9 @@ export class FetchApiDataService {
   }
 
   // Get user data
-  public getUser(): Observable<any> {
+  public getCurrentUser(): Observable<any> {
     return this.http
-      .get(apiUrl + 'users', { headers: this.getAuthHeaders() })
+      .get(apiUrl + 'users/me', { headers: this.getAuthHeaders() })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
@@ -87,35 +87,37 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Add to Favorites
-  public addFavoriteMovie(movieId: string): Observable<any> {
-    return this.http
-      .post(
-        apiUrl + `users/favorites/${movieId}`,
-        {},
-        { headers: this.getAuthHeaders() },
-      )
-      .pipe(catchError(this.handleError));
-  }
 
   // Edit User
   public editUser(updatedDetails: any): Observable<any> {
     return this.http
-      .put(apiUrl + 'users', updatedDetails, { headers: this.getAuthHeaders() })
+      .put(apiUrl + 'users/'+ updatedDetails.Username, updatedDetails, { headers: this.getAuthHeaders() })
       .pipe(catchError(this.handleError));
   }
 
   // Delete User
-  public deleteUser(): Observable<any> {
+  public deleteUser(username: string): Observable<any> {
     return this.http
-      .delete(apiUrl + 'users', { headers: this.getAuthHeaders() })
+      .delete(apiUrl + 'users/' + username, { headers: this.getAuthHeaders() })
       .pipe(catchError(this.handleError));
   }
 
+    // Add to Favorites
+    public addFavoriteMovie(username: string, movieId: string): Observable<any> {
+      return this.http
+        .post(
+          `${apiUrl}users/${username}/movies/${movieId}`,
+          {},
+          { headers: this.getAuthHeaders() },
+        )
+        .pipe(catchError(this.handleError));
+    }
+
   // Delete Movie from Favorites
-  public removeFavoriteMovie(movieId: string): Observable<any> {
+  public removeFavoriteMovie(username: string, movieId: string): Observable<any> {
     return this.http
-      .delete(apiUrl + `users/favorites/${movieId}`, {
+      .delete(
+        `${apiUrl}users/${username}/movies/${movieId}`, {
         headers: this.getAuthHeaders(),
       })
       .pipe(catchError(this.handleError));
