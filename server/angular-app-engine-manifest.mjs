@@ -1,6 +1,6 @@
 
 export default {
-  basePath: 'https://tannazmehr.github.io/myFlix-client-angular',
+  basePath: '/myFlix-client-angular',
   supportedLocales: {
   "en-US": ""
 },
