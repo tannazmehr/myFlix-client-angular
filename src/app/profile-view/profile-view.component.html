@@ -1,9 +1,9 @@
 <app-navbar></app-navbar>
-<mat-card>
+<mat-card class="profile-card">
   <mat-card-header>
     <h2>Hello, {{ username }}</h2>
   </mat-card-header>
-  <mat-card-title>You can update your info her:</mat-card-title><br>
+  <mat-card-title>You can update your info here:</mat-card-title><br>
   <mat-card-content>
   <form (ngSubmit)="updateUserProfile()">
     <mat-form-field>
@@ -23,22 +23,20 @@
 
     <mat-form-field>
       <mat-label>Birthday</mat-label>
-      <input matInput type="date" [matDatepicker]="picker" [(ngModel)]="userData.Birthday" name="birthday">
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+      <input matInput type="date" [(ngModel)]="userData.Birthday" name="birthday">
     </mat-form-field><br>
 
     <button mat-raised-button color="primary" type="submit">Update Profile</button>
   </form>
 </mat-card-content><br>
 
-    <mat-card-title>You can delete your account here: </mat-card-title><br>
-    <button mat-raised-button color="warn" (click)="onDeleteUser()">Delete Account</button>
+    <mat-card-title>and you can delete your account here: </mat-card-title><br>
+    <button mat-raised-button id="delete-button" (click)="onDeleteUser()">Delete Account</button>
 </mat-card>
 
-<h2>Your Favorite Movies</h2>
+<h2>What you've liked so far :</h2>
 
-<app-movie-card [movies]="favoriteMovies"></app-movie-card>
+<app-movie-card [movies]="favoriteMovies" [showNavbar]="false"></app-movie-card>
 
 <ng-template [ngIf]="favoriteMovies.length === 0">
   <p>You haven't added any favorite movies yet.</p>

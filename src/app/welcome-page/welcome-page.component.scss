@@ -1,0 +1,46 @@
+.main-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* full viewport height */
+    text-align: center;
+    background-image: url(../../../public/movie_collage_background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    padding: 20px;
+    color: white;
+  }
+
+  .main-page button {
+    min-width: 150px;
+    min-height: 50px;
+    margin: 5px;
+    font-size: 20px;
+    font-weight: bold;  
+    color: white;            
+    background-color: #1b334a;
+    border-radius: 8px;
+
+  }
+  
+  .main-page button:hover {
+    background-color: #5b7899;
+  }
+
+  .main-page h1 {
+    color: #5b7899;
+  }
+  
+  .custom-dialog-container {
+  border-radius: 16px;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+}
+
+  

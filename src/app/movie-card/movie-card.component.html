@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar *ngIf="showNavbar"></app-navbar>
     <div class="movie-list">
         <div class="horizontal-scroll">
             <mat-card *ngFor="let movie of movies || [];" class="movie-card" style=" justify-content: space-around;">

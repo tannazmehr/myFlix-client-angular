@@ -27,6 +27,7 @@ export class MovieCardComponent implements OnInit {
    * This can be passed in as an input from a parent component.
    */
   @Input() movies: any[] | null = null;
+  @Input() showNavbar: boolean = true;
 
   /**
    * Array of favorite movie IDs for the logged-in user.

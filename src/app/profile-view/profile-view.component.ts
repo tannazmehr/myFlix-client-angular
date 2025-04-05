@@ -12,7 +12,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
-
 /**
  * ProfileViewComponent
  * 
@@ -36,7 +35,7 @@ import { MovieCardComponent } from '../movie-card/movie-card.component';
     MovieCardComponent
   ],
   templateUrl: './profile-view.component.html',
-  styleUrl: './profile-view.component.scss'
+  styleUrl: './profile-view.component.scss',
 })
 export class ProfileViewComponent implements OnInit {
   /**
